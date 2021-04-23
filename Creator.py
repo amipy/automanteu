@@ -15,7 +15,7 @@ built=start
 addedWords=0
 making=True
 wordLimit=50
-#import sys
+import sys
 def bungalow():
     print(f"Finished. Used {addedWords} of {len(words)} words. Result is {len(built)} letters long.")
     with open("result.txt", "w") as rslt:
