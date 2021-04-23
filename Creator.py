@@ -21,11 +21,14 @@ addedWords = 0
 making = True
 
 #set this to None to remove limit
-wordLimit = 50
+wordLimit = None
+lenght=wordLimit
+if not lenght:
+    lenght=len(words)
 
 #exit function
 def bungalow():
-    print(f"Finished. Used {addedWords} of {len(words)} words. Result is {len(built)} letters long.")
+    print(f"Finished. Used {addedWords} of {lenght} words. Result is {len(built)} letters long.")
     with open("result.txt", "w") as rslt:
         rslt.write(built)
     input("Press enter to display.")
@@ -38,9 +41,7 @@ def bungalow():
 try:
     while making:
         for ind, i in enumerate(words):
-            if i in usedWords:
-                continue
-            elif i[0] == built[len(built) - 1]:
+            if i[0] == built[len(built) - 1]:
                 #Update lists and add word
                 usedWords += i
                 lbuilt = built
@@ -52,7 +53,7 @@ try:
         if not lbuilt == built:
             #print occasional status updates if portmanteu has been expanded
             if addedWords % 10 == 0:
-                print(f"Used {addedWords} of {len(words)} words ({math.floor(addedWords / len(words) * 100)}%).")
+                print(f"Used {addedWords} of {lenght} words ({math.floor(addedWords / lenght * 100)}%).")
                 # print(usedWords)
             if addedWords % 100 == 0:
                 print(f"Portmanteu is {len(built)} letters long.")
